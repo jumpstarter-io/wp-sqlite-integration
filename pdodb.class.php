@@ -12,7 +12,7 @@ if (!defined('ABSPATH')) {
 	die();
 }
 require_once PDODIR . 'pdoengine.class.php';
-require_once PDODIR . 'install.php';
+//require_once PDODIR . 'install.php';
 
 if (!defined('SAVEQUERIES')){
 	define ('SAVEQUERIES', false);
@@ -211,8 +211,6 @@ class PDODB extends wpdb {
 			$this->bail(sprintf(__("<h1>Error establlishing a database connection</h1><p>We have been unable to connect to the specified database. <br />The error message received was %s"), $this->dbh->errorInfo()));
 			return;
 		}
-		$is_enabled_foreign_keys = @$this->get_var('PRAGMA foreign_keys');
-		if ($is_enabled_foreign_keys == '0') @$this->query('PRAGMA foreign_keys = ON');
 		$this->has_connected = true;
 		$this->ready = true;
 	}
